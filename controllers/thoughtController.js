@@ -18,7 +18,7 @@ module.exports = {
         .catch((err) => res.status(500).json(err));
     },
     //POST to create new thought
-    createThought(req,req) {
+    createThought(req,res) {
         Thoughts.create(req.body)
         .then((thought) => {
             return User.findOneAndUpdate(
