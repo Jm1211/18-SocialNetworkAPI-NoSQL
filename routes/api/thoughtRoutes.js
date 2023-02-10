@@ -14,7 +14,7 @@ router.route('/').get(getAllThoughts).post(createThought);
 
 //route /:thoughtID will get single thought, put single thought, and delete
 router
-    .route("/:thoughtId")
+    .route("/:_id")
     .get(getSingleThought)
     .put(updateThought)
     .delete(deleteThought);

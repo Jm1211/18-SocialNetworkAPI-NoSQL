@@ -1,9 +1,10 @@
-const {User, Thoughts} = require('../models');
+const {Thoughts,User} = require('../models');
 
 module.exports = {
     //GET all thoughts
     getAllThoughts(req,res) {
         Thoughts.find()
+        .select('-__v')
         .then((thoughts) => res.json(thoughts))
         .catch((err) => res.status(500).json(err));
     },
@@ -86,7 +87,7 @@ module.exports = {
       deleteReaction(req,res) {
         Thoughts.findOneAndUpdate(
             {_id: req.params.thoughtId},
-            {$pull: {reactions: {_id: req.params.reactionId}}}
+            { $pull: {reactions: {_id: req.params.reactionId}}}
         )
         .then((thought) =>
         !thought
